@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Perfil Artístico</title>
+  <style>
+    /* --- ESTILOS GERAIS --- */
+    :root {
+      --bg-color: #f9f9f9;
+      --text-color: #222;
+      --card-color: #fff;
+      --accent: #e67e22;
+    }
+
+    body.dark {
+      --bg-color: #1b1b1b;
+      --text-color: #f2f2f2;
+      --card-color: #2c2c2c;
+      --accent: #f39c12;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      transition: background 0.5s, color 0.5s;
+    }
+
+    .card {
+      background: var(--card-color);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      border-radius: 20px;
+      text-align: center;
+      padding: 30px;
+      width: 300px;
+      transition: background 0.5s, color 0.5s;
+    }
+
+    .profile-pic {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent);
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      font-size: 1.6em;
+      margin: 10px 0 5px;
+    }
+
+    p {
+      font-size: 1em;
+      opacity: 0.8;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      opacity: 0.9;
+      transform: scale(1.05);
+    }
+
+    .input-area {
+      margin-top: 20px;
+    }
+
+    .input-area input {
+      width: 100%;
+      padding: 8px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img id="profileImage" class="profile-pic" src="https://i.imgur.com/v2z8pZV.png" alt="Foto de perfil" />
+    <h1 id="userName">Gabriel Andrade</h1>
+    <p id="userJob">🎨 Desenhista Digital</p>
+
+    <button id="themeButton">🌗 Mudar Tema</button>
+
+    <div class="input-area">
+      <input
+        type="text"
+        id="imageInput"
+        placeholder="Cole o link da imagem aqui..."
+      />
+    </div>
+  </div>
+
+  <script>
+    const themeButton = document.getElementById("themeButton");
+    const body = document.body;
+    const profileImage = document.getElementById("profileImage");
+    const imageInput = document.getElementById("imageInput");
+
+    // Alternar tema claro/escuro
+    themeButton.addEventListener("click", () => {
+      body.classList.toggle("dark");
+    });
+
+    // Atualizar imagem de perfil pelo link
+    imageInput.addEventListener("change", () => {
+      const newUrl = imageInput.value.trim();
+      if (newUrl) {
+        profileImage.src = newUrl;
+      }
+    });
+  </script>
+</body>
+</html>
